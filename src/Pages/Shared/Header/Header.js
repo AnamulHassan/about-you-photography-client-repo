@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../../../Assets/image/logo.png';
 
 const Header = () => {
   return (
@@ -12,7 +13,9 @@ const Header = () => {
     >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
-          <h2 className="text-4xl text-bolder">Eleven</h2>
+          <Link>
+            <img className="w-24" src={logo} alt="" />
+          </Link>
         </div>
         <div className="block lg:hidden pr-4">
           <button

@@ -7,6 +7,7 @@ import {
   FaTwitter,
 } from 'react-icons/fa';
 import { Tooltip } from '@material-tailwind/react';
+import logo from '../../../Assets/image/logo.png';
 
 const Footer = () => {
   return (
@@ -52,7 +53,7 @@ const Footer = () => {
             <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
               <Link className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                 <span className=" text-[#e8e7e2] text-2xl tracking-tighter">
-                  About You Photography
+                  <img className="w-4/5" src={logo} alt="" />
                 </span>
               </Link>
               <p className="uppercase text-sm font-semibold text-[#bbbcbb]">
