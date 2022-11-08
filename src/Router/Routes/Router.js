@@ -1,5 +1,6 @@
 import Main from '../../Layout/Main';
 import Home from '../../Pages/Home/Home';
+import ResetPassword from '../../Pages/ResetPassword/ResetPassword';
 import SignIn from '../../Pages/SignIn/SignIn';
 import SignUp from '../../Pages/SignUp/SignUp';
 
@@ -22,6 +23,10 @@ const Router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: '/reset_password',
+        element: <ResetPassword></ResetPassword>,
       },
     ],
   },
