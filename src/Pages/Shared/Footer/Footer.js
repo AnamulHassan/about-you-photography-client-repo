@@ -14,6 +14,7 @@ const Footer = () => {
       style={{
         background: 'linear-gradient(90deg, #295270 0%,  #524175 100%)',
       }}
+      className="mt-12"
     >
       <svg
         viewBox="0 0 1439 147"
@@ -63,7 +64,7 @@ const Footer = () => {
                 <h2 className="title-font text-lg font-bold text-[#e8e7e2] tracking-widest mb-2">
                   Insights & Strategy
                 </h2>
-                <nav className="list-none text-md mb-10 text-[#bbbcbb] font-semibold">
+                <nav className="list-none text-md lg:text-sm space-y-2 mb-10 text-[#bbbcbb] font-semibold">
                   <li>
                     <Link className=" hover:text-gray-300 cursor-pointer">
                       Marketing Audit
@@ -90,7 +91,7 @@ const Footer = () => {
                 <h2 className="title-font text-lg font-bold text-[#e8e7e2] tracking-widest mb-2">
                   Design & Storytelling
                 </h2>
-                <nav className="list-none text-md mb-10 text-[#bbbcbb] font-semibold">
+                <nav className="list-none text-md lg:text-sm space-y-2 mb-10 text-[#bbbcbb] font-semibold">
                   <li>
                     <Link className="hover:text-gray-300 cursor-pointer">
                       UX & UI Web Design
@@ -117,7 +118,7 @@ const Footer = () => {
                 <h2 className="title-font text-lg font-bold text-[#e8e7e2] tracking-widest mb-2">
                   Technology & Development
                 </h2>
-                <nav className="list-none text-md mb-10 text-[#bbbcbb] font-semibold">
+                <nav className="list-none text-md lg:text-sm space-y-2 mb-10 text-[#bbbcbb] font-semibold">
                   <li>
                     <Link className="hover:text-gray-300 cursor-pointer">
                       Web Development
@@ -159,6 +160,7 @@ const Footer = () => {
                   href="https://www.facebook.com/"
                   className="text-gray-500 cursor-pointer"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <span className="  rounded-full h-9 w-9 bg-[#4b69b0] flex items-center justify-center">
                     <FaFacebookF className="text-2xl text-white" />
@@ -176,6 +178,7 @@ const Footer = () => {
                   href="https://twitter.com/"
                   className="ml-3 text-gray-500 cursor-pointer"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <span className="  rounded-full h-9 w-9 bg-[#37b1e1] flex items-center justify-center">
                     <FaTwitter className="text-2xl text-white" />
@@ -192,6 +195,7 @@ const Footer = () => {
                 <a
                   href="https://www.instagram.com/"
                   target="_blank"
+                  rel="noreferrer"
                   className="ml-3 text-gray-500 cursor-pointer"
                 >
                   <span
@@ -217,6 +221,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/"
                   target="_blank"
                   className="ml-3 text-gray-500 cursor-pointer"
+                  rel="noreferrer"
                 >
                   <span className="  rounded-full h-9 w-9 bg-[#0678b6] flex items-center justify-center">
                     <FaLinkedinIn className="text-2xl text-white" />

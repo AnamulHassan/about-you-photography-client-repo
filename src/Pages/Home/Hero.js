@@ -1,5 +1,4 @@
 import React from 'react';
-import Banner from './Banner';
 
 const Hero = () => {
   return (
@@ -8,30 +7,7 @@ const Hero = () => {
         background: 'linear-gradient(90deg, #295270 0%,  #524175 100%)',
       }}
     >
-      <div className="pt-24">
-        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-          <div>
-            <Banner></Banner>
-          </div>
-          <div className="flex lg:hidden flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p className="uppercase tracking-loose w-full">My Approach</p>
-            <h1 className="my-4 text-5xl font-bold leading-tight">
-              I don't like posing for a camera so I don't expect my clients to.
-              Other than the family group shots, my approach is pure documentary
-              style. Perfect for the person not so keen on photos. My clients
-              always tell me how their favourite images are the ones they were
-              unaware of being documented.
-            </h1>
-            <p className="leading-normal text-2xl mb-8">
-              Sub-hero message, not too long and not too short. Make it just
-              right!
-            </p>
-            <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </div>
+      <div className="pt-24"></div>
       <div className="relative -mt-12 lg:-mt-24">
         <svg
           viewBox="0 0 1428 174"
