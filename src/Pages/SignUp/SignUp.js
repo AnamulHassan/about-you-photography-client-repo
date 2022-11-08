@@ -6,9 +6,11 @@ const SignUp = () => {
   const handleSignup = event => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const confirmPassword = form.passwordConfirm.value;
+    console.log(email, password, confirmPassword, name);
   };
   return (
     <div>
