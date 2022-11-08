@@ -1,12 +1,14 @@
 import React from 'react';
+import Banner from './Banner';
 import Hero from './Hero';
-import Slider from './Slider';
+import Service from './Service';
 
 const Home = () => {
   return (
     <section>
       <Hero></Hero>
-      <Slider></Slider>
+      <Banner></Banner>
+      <Service></Service>
     </section>
   );
 };
