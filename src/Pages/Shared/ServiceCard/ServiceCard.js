@@ -40,7 +40,7 @@ const ServiceCard = ({ serviceData }) => {
         </div>
         <div>
           <Link
-            to={`/services/:${_id}`}
+            to={`/services/${_id}`}
             className="flex justify-center items-center text-center text-xl font-bold hover:text-white hover:rounded-full hover:mx-2 duration-200 py-4 mt-4 bg-[#445c44] text-[#e8e7e2]"
           >
             View Details <FaExternalLinkSquareAlt className="ml-2 text-2xl" />
