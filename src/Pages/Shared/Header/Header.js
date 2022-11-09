@@ -1,8 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../Assets/image/logo.png';
+import { AuthContext } from '../../../Contexts/UserContext';
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user?.photoURL);
   return (
     <nav
       style={{
@@ -13,7 +17,7 @@ const Header = () => {
     >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
-          <Link>
+          <Link to="/home">
             <img className="w-24" src={logo} alt="" />
           </Link>
         </div>
@@ -42,7 +46,7 @@ const Header = () => {
                 className="inline-block py-2 px-4 text-[#e8e7e2] font-bold no-underline"
                 href="#"
               >
-                Link 1
+                {user?.displayName}
               </NavLink>
             </li>
             <li className="mr-3">

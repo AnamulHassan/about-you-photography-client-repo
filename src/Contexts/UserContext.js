@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import app from '../Firebase/firebase.config';
 import {
@@ -9,13 +9,21 @@ import {
   updateProfile,
   sendPasswordResetEmail,
   deleteUser,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
 } from 'firebase/auth';
 
 export const AuthContext = createContext(app);
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const [error, setError] = useState('');
+  // console.log(user);
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -37,16 +45,32 @@ const UserContext = ({ children }) => {
   const removeUser = () => {
     return deleteUser(auth.currentUser);
   };
+  const googleSignIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const facebookSignIn = () => {
+    return signInWithPopup(auth, facebookProvider);
+  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const userInfo = {
     user,
     setUser,
+    error,
+    setError,
     createUser,
     signInWithEmailPass,
     logOutUser,
     updateUserProfile,
     forgetPassword,
     removeUser,
+    googleSignIn,
+    facebookSignIn,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
-  const { setUser, createUser, updateUserProfile } = useContext(AuthContext);
-  const [error, setError] = useState('');
+  const { setUser, error, setError, createUser, updateUserProfile } =
+    useContext(AuthContext);
   const handleSignup = event => {
     event.preventDefault();
     const form = event.target;
@@ -37,16 +37,15 @@ const SignUp = () => {
     createUser(email, password)
       .then(result => {
         setUser(result.user);
+        form.reset();
         setError('');
         updateUserProfile(name, photoUrl)
           .then(() => {
             setError('');
           })
           .catch(error => setError(error.message));
-        form.reset();
       })
       .catch(error => setError(error.message));
-    console.log(email, password, confirmPassword, name, photoUrl);
   };
   return (
     <div>

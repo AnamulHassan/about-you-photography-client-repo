@@ -1,26 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 
 const ResetPassword = () => {
-  const [error, setError] = useState('');
-  const {
-    user,
-    setUser,
-    createUser,
-    signInWithEmailPass,
-    logOutUser,
-    updateUserProfile,
-    forgetPassword,
-    removeUser,
-  } = useContext(AuthContext);
+  const { forgetPassword, error, setError } = useContext(AuthContext);
   const handleResetPassword = event => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     forgetPassword(email)
-      .then(result => console.log(result))
+      .then(result => {
+        console.log(result);
+        toast.success('Check your email to reset your password', {
+          style: {
+            border: '4px solid #445c44',
+            padding: '16px',
+            BackgroundColor: '#dbd7ce',
+            fontSize: '20px',
+            fontWeight: '600',
+          },
+        });
+      })
       .catch(error => setError(error.message));
   };
   return (
@@ -70,10 +72,10 @@ const ResetPassword = () => {
                   <div className="flex justify-center items-center text-sm">
                     <p className="mr-2  text-[#939894]">
                       {' '}
-                      Do you want to create new one
+                      Do you want to create new one?
                     </p>
                     <Link
-                      to="#"
+                      to="/signup"
                       className="text-[#3d8aa4] duration-200 font-bold hover:text-[#445c44]"
                     >
                       Create new

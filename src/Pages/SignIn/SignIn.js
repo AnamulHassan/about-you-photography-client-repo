@@ -1,32 +1,31 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignIn = () => {
-  const [error, setError] = useState('');
-  const {
-    user,
-    setUser,
-    createUser,
-    signInWithEmailPass,
-    logOutUser,
-    updateUserProfile,
-    forgetPassword,
-    removeUser,
-  } = useContext(AuthContext);
+  const { setUser, error, setError, signInWithEmailPass } =
+    useContext(AuthContext);
   const handleLogin = event => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     signInWithEmailPass(email, password)
       .then(result => {
         setUser(result.user);
         setError('');
+        toast.success(`Welcome back, ${result?.user?.displayName}`, {
+          style: {
+            border: '4px solid #445c44',
+            padding: '16px',
+            BackgroundColor: '#dbd7ce',
+            fontSize: '20px',
+            fontWeight: '600',
+          },
+        });
         form.reset();
-        console.log(result);
       })
       .catch(error => setError(error.message));
   };
@@ -108,7 +107,7 @@ const SignIn = () => {
                 </div>
                 <SocialLogin></SocialLogin>
                 <div className="mt-2 mb-6">
-                  <div className="flex justify-center items-center text-sm">
+                  <div className="flex justify-center items-center  text-sm">
                     <p className="mr-2  text-[#939894]">
                       {' '}
                       Don't have any account
