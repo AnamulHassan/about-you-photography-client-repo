@@ -3,9 +3,15 @@ import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ serviceData }) => {
-  const { img1, serviceName, serviceRating, servicePackage1, serviceDetails } =
-    serviceData;
-  // console.log(serviceData);
+  const {
+    _id,
+    img1,
+    serviceName,
+    serviceRating,
+    servicePackage1,
+    serviceDetails,
+  } = serviceData;
+  // console.log(_id);
   return (
     <div className="bg-white">
       <div>
@@ -33,7 +39,10 @@ const ServiceCard = ({ serviceData }) => {
           </div>
         </div>
         <div>
-          <Link className="flex justify-center items-center text-center text-xl font-bold hover:text-white hover:rounded-full hover:mx-2 duration-200 py-4 mt-4 bg-[#445c44] text-[#e8e7e2]">
+          <Link
+            to={`/services/:${_id}`}
+            className="flex justify-center items-center text-center text-xl font-bold hover:text-white hover:rounded-full hover:mx-2 duration-200 py-4 mt-4 bg-[#445c44] text-[#e8e7e2]"
+          >
             View Details <FaExternalLinkSquareAlt className="ml-2 text-2xl" />
           </Link>
         </div>

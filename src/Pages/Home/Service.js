@@ -30,7 +30,10 @@ const Service = () => {
         ))}
       </div>
       <div className="w-full flex justify-center my-8">
-        <Link className="text-[#445c44] text-xl font-bold border-b-2 border-[#445c44] hover:border-[#e8e7e2] duration-200 leading-4 tracking-tight">
+        <Link
+          to="/services"
+          className="text-[#445c44] text-xl font-bold border-b-2 border-[#445c44] hover:border-[#e8e7e2] duration-200 leading-4 tracking-tight"
+        >
           See More Services
         </Link>
       </div>

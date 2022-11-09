@@ -12,7 +12,7 @@ const Features = () => {
           style={{ fontFamily: "'Roboto Slab', sans-serif" }}
           className="text-5xl text-[#445c44] tracking-tight font-bold uppercase mb-6"
         >
-          You can take a goog Photo
+          You can take a good photo
         </h2>
       </div>
       <div className="w-full flex">
