@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData, useLocation } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 
 const ReviewRewrite = () => {
   const { stepBack } = useContext(AuthContext);
-  const { _id, date, email, img, name, rating, review } = oldReviewData[0];
+  const oldReviewData = useLoaderData();
+  const { _id, email, img, name, rating, review } = oldReviewData[0];
   const [error, setError] = useState('');
   const handleChangeReview = event => {
     event.preventDefault();

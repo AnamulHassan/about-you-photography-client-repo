@@ -10,13 +10,12 @@ const MyReview = () => {
   const { user } = useContext(AuthContext);
   // console.log(user.email);
   useEffect(() => {
-    fetch(`http://localhost:5000/review_data?email=${user?.email}`, {})
+    fetch(`http://localhost:5000/my_review?email=${user?.email}`, {})
       .then(res => res.json())
       .then(data => {
         setReviews(data);
       });
   }, [user?.email]);
-  console.log(reviews);
   return (
     <section className="w-10/12 mx-auto pb-24 mt-24 mb-8 ">
       <div></div>

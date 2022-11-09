@@ -1,16 +1,40 @@
 import React from 'react';
 import { useContext } from 'react';
-import { FaPencilAlt, FaStar } from 'react-icons/fa';
+import { FaPencilAlt, FaStar, FaTrashAlt } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContext';
+import Swal from 'sweetalert2';
 
 const Testimonial = ({ reviewData }) => {
   const { user, setStepBack } = useContext(AuthContext);
   const location = useLocation();
   const { _id, img, email, name, rating, review } = reviewData;
-  // console.log(reviewData);
+  const handleReviewDelete = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to delete this review',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#445c44',
+      cancelButtonColor: '#906253',
+      confirmButtonText: 'Delete',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/review_data/${_id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(result => {
+            console.log(result);
+            if (result.deletedCount > 0) {
+              Swal.fire('Deleted!', 'Your review has been deleted.', 'success');
+            }
+          });
+      }
+    });
+  };
   return (
-    <section className="bg-[#e8e7e2] mb-6 relative">
+    <section className="bg-[#e8e7e2] mb-6 relative border-b-4 border-[#445c44]">
       <div className="flex items-center">
         <div className="w-1/4">
           <img className="h-full w-full" src={img} alt="" />
@@ -32,17 +56,32 @@ const Testimonial = ({ reviewData }) => {
         </div>
       </div>{' '}
       {user?.email === email && (
-        <Link
-          onClick={() => setStepBack(location.pathname)}
-          to={`/review_rewrite/${_id}`}
-          className="absolute right-0 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-        >
-          {' '}
-          <span className="w-12 h-12 rounded-full duration-200 text-[#445c44] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
+        <div>
+          <Link
+            onClick={() => setStepBack(location.pathname)}
+            to={`/review_rewrite/${_id}`}
+            className="absolute right-0 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+          >
             {' '}
-            <FaPencilAlt className="text-2xl" />
-          </span>
-        </Link>
+            <span className="w-12 h-12 rounded-full duration-200 text-[#445c44] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
+              {' '}
+              <FaPencilAlt className="text-2xl" />
+            </span>
+          </Link>
+          {location.pathname === '/my_review' && (
+            <button
+              onClick={() => handleReviewDelete(_id)}
+              to={`/review_rewrite/${_id}`}
+              className="absolute right-16 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            >
+              {' '}
+              <span className="w-12 h-12 rounded-full duration-200 text-[#906253] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
+                {' '}
+                <FaTrashAlt className="text-2xl" />
+              </span>
+            </button>
+          )}
+        </div>
       )}
     </section>
   );
