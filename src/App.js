@@ -21,3 +21,11 @@ export default App;
 /* {
    style={{fontFamily: "'Roboto Slab', sans-serif"}}
 } */
+
+// {
+//   fontFamily: "'Dancing Script', cursive";
+// }
+
+// {
+//   font-family: 'Nunito', sans-serif;
+// }
