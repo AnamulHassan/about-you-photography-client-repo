@@ -1,5 +1,7 @@
 import Main from '../../Layout/Main';
+import AddService from '../../Pages/AddService/AddService';
 import Home from '../../Pages/Home/Home';
+import MyReview from '../../Pages/MyReview/MyReview';
 import ResetPassword from '../../Pages/ResetPassword/ResetPassword';
 import ReviewRewrite from '../../Pages/ReviewRewrite/ReviewRewrite';
 import ServiceDetails from '../../Pages/Services/ServiceDetails';
@@ -43,10 +45,18 @@ const Router = createBrowserRouter([
         element: <ServiceDetails></ServiceDetails>,
       },
       {
-        path: '//review_rewrite/:reviewId',
+        path: '/review_rewrite/:reviewId',
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.reviewId}`),
+          fetch(`http://localhost:5000/review_rewrite/${params.reviewId}`),
         element: <ReviewRewrite></ReviewRewrite>,
+      },
+      {
+        path: '/my_review',
+        element: <MyReview></MyReview>,
+      },
+      {
+        path: '/add_service',
+        element: <AddService></AddService>,
       },
     ],
   },

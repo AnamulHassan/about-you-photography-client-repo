@@ -1,20 +1,21 @@
 import React from 'react';
 import { useContext } from 'react';
 import { FaPencilAlt, FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContext';
 
 const Testimonial = ({ reviewData }) => {
-  const { user } = useContext(AuthContext);
+  const { user, setStepBack } = useContext(AuthContext);
+  const location = useLocation();
   const { _id, img, email, name, rating, review } = reviewData;
-  console.log(reviewData);
+  // console.log(reviewData);
   return (
     <section className="bg-[#e8e7e2] mb-6 relative">
       <div className="flex items-center">
         <div className="w-1/4">
           <img className="h-full w-full" src={img} alt="" />
         </div>
-        <div className="w-3/4  px-6">
+        <div className="w-3/4 py-8  px-6">
           <p className="font-medium italic text-[#928979]">{review}</p>
           <p
             style={{ fontFamily: "'Dancing Script', cursive" }}
@@ -32,6 +33,7 @@ const Testimonial = ({ reviewData }) => {
       </div>{' '}
       {user?.email === email && (
         <Link
+          onClick={() => setStepBack(location.pathname)}
           to={`/review_rewrite/${_id}`}
           className="absolute right-0 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
         >

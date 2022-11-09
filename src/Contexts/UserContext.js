@@ -23,6 +23,7 @@ const facebookProvider = new FacebookAuthProvider();
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
+  const [stepBack, setStepBack] = useState('');
   // console.log(user);
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -71,6 +72,8 @@ const UserContext = ({ children }) => {
     removeUser,
     googleSignIn,
     facebookSignIn,
+    stepBack,
+    setStepBack,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

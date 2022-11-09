@@ -42,28 +42,25 @@ const Header = () => {
         >
           <ul className="list-reset lg:flex justify-end flex-1 items-center">
             <li className="mr-3">
-              <NavLink
-                className="inline-block py-2 px-4 text-[#e8e7e2] font-bold no-underline"
-                href="#"
-              >
+              <NavLink className="inline-block py-2 px-4 text-[#e8e7e2] font-bold no-underline">
                 {user?.displayName}
               </NavLink>
             </li>
             <li className="mr-3">
-              <a
-                className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                href="#"
+              <NavLink
+                to="/my_review"
+                className="inline-block   text-[#e8e7e2] hover:text-underline py-2 px-4"
               >
-                link
-              </a>
+                My Review
+              </NavLink>
             </li>
             <li className="mr-3">
-              <a
-                className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                href="#"
+              <NavLink
+                to="add_service"
+                className="inline-block text-[#e8e7e2] hover:text-underline py-2 px-4"
               >
-                link
-              </a>
+                Add Service
+              </NavLink>
             </li>
           </ul>
           <button
