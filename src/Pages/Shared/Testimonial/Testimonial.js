@@ -20,9 +20,12 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
       confirmButtonText: 'Delete',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/review_data/${_id}`, {
-          method: 'DELETE',
-        })
+        fetch(
+          `https://about-you-photography-server.vercel.app/review_data/${_id}`,
+          {
+            method: 'DELETE',
+          }
+        )
           .then(res => res.json())
           .then(result => {
             console.log(result);
@@ -39,11 +42,15 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
   };
   return (
     <section className="bg-[#e8e7e2] mb-6 relative border-b-4 border-[#445c44]">
-      <div className="flex items-center">
-        <div className="w-1/4">
-          <img className="h-full w-full" src={img} alt="" />
+      <div className="flex flex-col lg:flex-row items-center">
+        <div className="w-1/2 lg:w-1/4">
+          <img
+            className="h-full rounded-full mt-4 lg:mt-0 lg:rounded-none w-full"
+            src={img}
+            alt=""
+          />
         </div>
-        <div className="w-3/4 py-8  px-6">
+        <div className="w-11/12 lg:w-3/4 py-8  px-6">
           <p className="font-medium italic text-[#928979]">{review}</p>
           <p
             style={{ fontFamily: "'Dancing Script', cursive" }}
@@ -67,9 +74,9 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
             className="absolute right-0 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
             {' '}
-            <span className="w-12 h-12 rounded-full duration-200 text-[#445c44] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
+            <span className="w-8 lg:w-12 h-8 lg:h-12 rounded-full duration-200 text-[#445c44] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
               {' '}
-              <FaPencilAlt className="text-2xl" />
+              <FaPencilAlt className="text-lg lg:text-2xl" />
             </span>
           </Link>
           {location.pathname === '/my_review' && (
@@ -79,9 +86,9 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
               className="absolute right-16 bottom-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
             >
               {' '}
-              <span className="w-12 h-12 rounded-full duration-200 text-[#906253] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
+              <span className="w-8 lg:w-12 h-8 lg:h-12 rounded-full duration-200 text-[#906253] hover:text-[#e8e7e2] hover:bg-[#928979] bg-[#dbd7ce] flex items-center justify-center">
                 {' '}
-                <FaTrashAlt className="text-2xl" />
+                <FaTrashAlt className="text-lg lg:text-2xl" />
               </span>
             </button>
           )}

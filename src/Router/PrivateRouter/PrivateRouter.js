@@ -1,11 +1,18 @@
 import React from 'react';
+import { useContext } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UserContext';
 
-const PrivateRouter = () => {
-  return (
-    <div>
-      <h2 className="text-2xl text-center py-12">Private Router</h2>
-    </div>
-  );
+const PrivateRouter = ({ children }) => {
+  const location = useLocation();
+  const { user, loading } = useContext(AuthContext);
+  if (loading) {
+    return <h3 className="text-center py-24 text-2xl">Loading...</h3>;
+  }
+  if (user) {
+    return children;
+  }
+  return <Navigate to="/signin" state={{ from: location }} replace></Navigate>;
 };
 
 export default PrivateRouter;

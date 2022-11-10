@@ -24,11 +24,14 @@ const UserContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
   const [stepBack, setStepBack] = useState('');
+  const [loading, setLoading] = useState(true);
   // console.log(user);
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInWithEmailPass = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logOutUser = () => {
@@ -47,14 +50,17 @@ const UserContext = ({ children }) => {
     return deleteUser(auth.currentUser);
   };
   const googleSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   const facebookSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, facebookProvider);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
@@ -74,6 +80,8 @@ const UserContext = ({ children }) => {
     facebookSignIn,
     stepBack,
     setStepBack,
+    loading,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

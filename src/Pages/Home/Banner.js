@@ -14,7 +14,7 @@ import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa';
 const Banner = () => {
   const [slidersData, setSlidersData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/slider')
+    fetch('https://about-you-photography-server.vercel.app/slider')
       .then(res => res.json())
       .then(data => setSlidersData(data));
   }, []);

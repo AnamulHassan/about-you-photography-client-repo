@@ -2,19 +2,31 @@ import React from 'react';
 import { useContext } from 'react';
 import { FaFacebook } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContext';
 
 const SocialLogin = () => {
-  const { setUser, setError, googleSignIn, facebookSignIn } =
+  const { setUser, setError, googleSignIn, facebookSignIn, setLoading } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || '/';
   const handleFacebookLogin = () => {
     facebookSignIn()
-      .then(result => setUser(result.user))
+      .then(result => {
+        setUser(result.user);
+        setLoading(false);
+        navigate(from, { replace: true });
+      })
       .catch(error => setError(error));
   };
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then(result => setUser(result.user))
+      .then(result => {
+        setUser(result.user);
+        setLoading(false);
+        navigate(from, { replace: true });
+      })
       .catch(error => setError(error));
   };
   return (

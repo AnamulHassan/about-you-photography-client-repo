@@ -7,7 +7,7 @@ const RecentWork = () => {
   const [recentWork, setRecentWork] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/recent_work')
+    fetch('https://about-you-photography-server.vercel.app/recent_work')
       .then(res => res.json())
       .then(data => setRecentWork(data));
   }, []);

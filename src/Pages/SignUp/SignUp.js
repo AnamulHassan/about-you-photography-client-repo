@@ -1,11 +1,20 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
-  const { setUser, error, setError, createUser, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    setUser,
+    error,
+    setError,
+    setLoading,
+    createUser,
+    updateUserProfile,
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || '/';
   const handleSignup = event => {
     event.preventDefault();
     const form = event.target;
@@ -38,7 +47,25 @@ const SignUp = () => {
       .then(result => {
         setUser(result.user);
         form.reset();
-        setError('');
+        const currentUser = {
+          email: result.user.email,
+        };
+        fetch('https://about-you-photography-server.vercel.app/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('ayp-token', JSON.stringify(data.token));
+            setLoading(false);
+            navigate(from, { replace: true });
+            setError('');
+            setError('');
+          });
+
         updateUserProfile(name, photoUrl)
           .then(() => {
             setError('');
@@ -50,8 +77,8 @@ const SignUp = () => {
   return (
     <div>
       <div>
-        <div className="relative min-h-screen mt-24 flex flex-col sm:justify-center items-center ">
-          <div className="relative sm:max-w-sm w-full">
+        <div className="relative min-h-screen mt-12 flex flex-col sm:justify-center items-center ">
+          <div className="relative sm:max-w-sm w-11/12 lg:w-full">
             <div className="card bg-[#295270] blur-md  w-full h-full  absolute  transform -rotate-3"></div>
             <div className="card bg-[#524175]  blur-md w-full h-full  absolute  transform rotate-3"></div>
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-[#dbd7ce] shadow-md">

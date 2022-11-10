@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -45,7 +45,7 @@ const AddService = () => {
     };
     // console.log(addService);
 
-    fetch(`http://localhost:5000/add_service`, {
+    fetch(`https://about-you-photography-server.vercel.app/add_service`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -85,19 +85,21 @@ const AddService = () => {
   return (
     <section
       style={{ fontFamily: "'Nunito', sans-serif" }}
-      className="text-[#353733] mt-24 py-12 px-8 w-8/12 mx-auto bg-[#dbd7ce]"
+      className="text-[#353733] mt-8 lg:mt-16 py-12 px-2 lg:px-8 w-11/12 lg:w-8/12 mx-auto bg-[#dbd7ce]"
     >
-      <h1 className="text-center font-bold text-3xl ">Add Service</h1>
+      <h1 className="text-center font-bold mb-6 lg:mb-0 text-3xl ">
+        Add Service
+      </h1>
       <form onSubmit={handleAddService}>
         <div className="">
           <label
-            className="text-2xl ml-8 font-semibold block select-none mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="serviceName"
           >
             Name
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             type="text"
             name="serviceName"
             id="serviceName"
@@ -107,13 +109,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="img1"
           >
             Photo Url 1
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url 1"
             type="text"
             name="img1"
@@ -123,13 +125,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="img2"
           >
             Photo Url 2
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url 2"
             type="text"
             name="img2"
@@ -139,13 +141,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="img3"
           >
             Photo Url 3
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url 3"
             type="text"
             name="img3"
@@ -155,13 +157,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="img4"
           >
             Photo Url 4
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url 4"
             type="text"
             name="img4"
@@ -171,13 +173,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="img5"
           >
             Photo Url 5
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url 5"
             type="text"
             name="img5"
@@ -185,49 +187,15 @@ const AddService = () => {
             id="img5"
           />
         </div>
-        {/* <div className="flex space-x-4">
-          <div className="w-1/2">
-            <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
-              htmlFor=""
-            >
-              Your Email
-            </label>
-            <input
-              className="block  w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
-              type="email"
-              name="email"
-              id="email"
-              defaultValue={user?.email}
-              readOnly
-            />
-          </div>
-          <div className="w-1/2">
-            <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
-              htmlFor="userRating"
-            >
-              Your Rating
-            </label>
-            <input
-              className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
-              type="telephone"
-              name="userRating"
-              id="userRating"
-              required
-              placeholder="Give your rating"
-            />
-          </div>
-        </div> */}
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="details"
           >
             Description
           </label>
           <textarea
-            className="block w-full px-8 py-4 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             name="details"
             id="details"
             cols="20"
@@ -238,13 +206,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="package1"
           >
             Service Package 1
           </label>
           <textarea
-            className="block w-full px-8 py-4 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             name="package1"
             id="package1"
             cols="20"
@@ -255,13 +223,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="package2"
           >
             Service Package 2
           </label>
           <textarea
-            className="block w-full px-8 py-4 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             name="package2"
             id="package2"
             cols="20"
@@ -272,13 +240,13 @@ const AddService = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="rating"
           >
             Rating
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Service Rating"
             type="text"
             name="rating"
@@ -299,7 +267,7 @@ const AddService = () => {
             <input
               type="submit"
               value="Continue "
-              className="flex justify-center cursor-pointer items-center text-center text-xl font-bold hover:text-white   px-8 duration-200 py-2 mt-4 bg-[#445c44] text-[#e8e7e2]"
+              className="flex justify-center cursor-pointer items-center text-center text-md lg:text-xl font-bold hover:text-white   px-8 duration-200 py-2 mt-4 bg-[#445c44] text-[#e8e7e2]"
             />
           </div>
         </div>

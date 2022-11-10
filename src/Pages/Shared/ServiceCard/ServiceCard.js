@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaExternalLinkSquareAlt } from 'react-icons/fa';
+import { FaExternalLinkSquareAlt, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ serviceData }) => {
@@ -37,7 +37,14 @@ const ServiceCard = ({ serviceData }) => {
             <p className=" text-md font-semibold text-[#5e422d]">
               Package Rating
             </p>
-            <p className="text-xl font-bold text-[#906253]">{serviceRating}</p>
+            <ul className="flex  items-center">
+              {[...Array(Math.ceil(+serviceRating)).keys()].map((_, index) => (
+                <FaStar className="text-[#f59f00]" key={index} />
+              ))}
+              <li className="text-md font-bold ml-2 text-[#445c44]">
+                {serviceRating}
+              </li>
+            </ul>
           </div>
         </div>
         <div>

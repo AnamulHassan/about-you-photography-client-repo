@@ -27,20 +27,22 @@ const ServiceDetails = () => {
   } = serviceInfo;
   // console.log(serviceInfo);
   useEffect(() => {
-    fetch(`http://localhost:5000/review_data?category=${serviceName}`, {})
+    fetch(
+      `https://about-you-photography-server.vercel.app/review_data?category=${serviceName}`,
+      {}
+    )
       .then(res => res.json())
       .then(data => {
         setReviews(data);
       });
   }, []);
-  // console.log(serviceInfo);
   return (
     <section className="bg-[#dbd7ce] -mb-12">
       <div
         style={{ fontFamily: "'Nunito', sans-serif" }}
-        className="w-10/12 mx-auto pb-24 mt-24 mb-8 "
+        className="w-11/12 lg:w-10/12 mx-auto pb-12 lg:pb-24 mt-6 lg:mt-12 mb-8 "
       >
-        <div className=" grid grid-cols-2 pt-12 relative">
+        <div className=" grid grid-cols-2 pt-6 relative">
           <PhotoProvider>
             <PhotoView src={img1}>
               <img
@@ -98,8 +100,8 @@ const ServiceDetails = () => {
           <h2 className="text-4xl mt-4 font-bold text-center mb-6 tracking-tighter text-[#445c44]">
             Package Information
           </h2>
-          <div className="flex select-none justify-around">
-            <ul className="bg-white py-10 px-8">
+          <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 select-none justify-around items-center">
+            <ul className="bg-white py-10 px-8 w-11/12 lg:w-4/12">
               <li className="font-semibold text-2xl text-[#353733] text-center mb-2">
                 Super Saver
               </li>
@@ -112,7 +114,7 @@ const ServiceDetails = () => {
                 </li>
               ))}
             </ul>
-            <ul className="bg-white py-10 px-8">
+            <ul className="bg-white py-10 px-8 w-11/12 lg:w-4/12">
               <li className="font-semibold text-2xl text-[#353733] text-center  mb-2">
                 Standard
               </li>
@@ -128,7 +130,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-      <div className="w-10/12 mb-16 mx-auto">
+      <div className="w-11/12 lg:w-10/12 mb-16 mx-auto">
         <h2 className="text-4xl mb-2 uppercase italic font-bold text-center tracking-tighter text-[#445c44]">
           Our Clients
         </h2>
@@ -149,8 +151,9 @@ const ServiceDetails = () => {
           ))}
         {reviews.length === 0 && (
           <div className="flex justify-center">
-            <h2 className="  my-8 inline-flex font-semibold items-center text-[#5e422d] bg-[#d1c0b9] border-2 px-10 py-2">
-              There is no review in this service <FaSadTear className="ml-2" />
+            <h2 className="  my-8 inline-flex font-semibold items-center text-[#5e422d] bg-[#d1c0b9] border-2 text-xm lg:text-xl px-2 lg:px-10 py-2">
+              There is no review in this service{' '}
+              <FaSadTear className="ml-1 lg:ml-2" />
             </h2>
           </div>
         )}

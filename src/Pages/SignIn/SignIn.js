@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignIn = () => {
-  const { setUser, error, setError, signInWithEmailPass } =
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || '/';
+  const { setUser, error, setError, signInWithEmailPass, setLoading } =
     useContext(AuthContext);
   const handleLogin = event => {
     event.preventDefault();
@@ -16,6 +19,22 @@ const SignIn = () => {
       .then(result => {
         setUser(result.user);
         setError('');
+        const currentUser = {
+          email: result.user.email,
+        };
+        fetch('https://about-you-photography-server.vercel.app/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('ayp-token', JSON.stringify(data.token));
+            navigate(from, { replace: true });
+            setLoading(false);
+          });
         toast.success(`Welcome back, ${result?.user?.displayName}`, {
           style: {
             border: '4px solid #445c44',
@@ -33,7 +52,7 @@ const SignIn = () => {
     <div>
       <div>
         <div className="relative min-h-screen flex flex-col sm:justify-center items-center ">
-          <div className="relative sm:max-w-sm w-full">
+          <div className="relative sm:max-w-sm mt-12 lg:mt-0 w-11/12 lg:w-full">
             <div className="card bg-[#295270] blur-md  w-full h-full  absolute  transform -rotate-3"></div>
             <div className="card bg-[#524175]  blur-md w-full h-full  absolute  transform rotate-3"></div>
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-[#dbd7ce] shadow-md">

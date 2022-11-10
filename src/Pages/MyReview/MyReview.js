@@ -3,22 +3,41 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { FaSadTear } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 import Testimonial from '../Shared/Testimonial/Testimonial';
 
 const MyReview = () => {
   const [reviews, setReviews] = useState([]);
-  const { user } = useContext(AuthContext);
-  // console.log(reviews);
+  const navigate = useNavigate();
+  const { user, logOutUser } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/my_review?email=${user?.email}`, {})
-      .then(res => res.json())
+    fetch(
+      `https://about-you-photography-server.vercel.app/my_review?email=${user?.email}`,
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${JSON.parse(
+            localStorage.getItem('ayp-token')
+          )}`,
+        },
+      }
+    )
+      .then(res => {
+        if (res.status === 401 || res.status === 403) {
+          navigate('/signin');
+          return logOutUser()
+            .then(() => {})
+            .catch(error => console.log(error));
+        }
+        return res.json();
+      })
       .then(data => {
         setReviews(data);
       });
-  }, [user?.email]);
+  }, [user?.email, logOutUser, navigate]);
   return (
-    <section className="w-10/12 mx-auto pb-24 mt-24 mb-8 ">
+    <section className="w-11/12 lg:w-10/12 mx-auto pb-18 mt-8 mb-8 ">
       <div>
         <h2 className="text-3xl text-center my-6 font-bold text-[#445c44]">
           Your Review
@@ -34,7 +53,7 @@ const MyReview = () => {
 
       <div>
         {reviews &&
-          reviews.map((review, index) => (
+          reviews?.map((review, index) => (
             <Testimonial
               key={index}
               reviewData={review}

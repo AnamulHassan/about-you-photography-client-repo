@@ -28,8 +28,8 @@ const ResetPassword = () => {
   return (
     <div>
       <div>
-        <div className="relative min-h-screen flex flex-col sm:justify-center items-center ">
-          <div className="relative sm:max-w-sm w-full">
+        <div className="relative min-h-screen mt-12 lg:mt-0 flex flex-col sm:justify-center items-center ">
+          <div className="relative sm:max-w-sm w-11/12 lg:w-full">
             <div className="card bg-[#295270] blur-md  w-full h-full  absolute  transform -rotate-3"></div>
             <div className="card bg-[#524175]  blur-md w-full h-full  absolute  transform rotate-3"></div>
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-[#dbd7ce] shadow-md">

@@ -28,13 +28,16 @@ const ReviewRewrite = () => {
       review,
     };
     // console.log(updateReview);
-    fetch(`http://localhost:5000/review_rewrite/${_id}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(updateReview),
-    })
+    fetch(
+      `https://about-you-photography-server.vercel.app/review_rewrite/${_id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(updateReview),
+      }
+    )
       .then(res => res.json())
       .then(result => {
         if (result.modifiedCount > 0) {
@@ -67,19 +70,21 @@ const ReviewRewrite = () => {
   return (
     <section
       style={{ fontFamily: "'Nunito', sans-serif" }}
-      className="text-[#353733] mt-24 py-12 px-8 w-8/12 mx-auto bg-[#dbd7ce]"
+      className="text-[#353733] mt-12 py-8 lg:py-12 px-2 lg:px-8 w-11/12 lg:w-8/12 mx-auto bg-[#dbd7ce]"
     >
-      <h1 className="text-center font-bold text-3xl ">Re-write Your Review</h1>
+      <h1 className="text-center font-bold mb-8 lg:mb-2 text-3xl ">
+        Re-write Your Review
+      </h1>
       <form onSubmit={handleChangeReview}>
         <div className="">
           <label
-            className="text-2xl ml-8 font-semibold block select-none mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="name"
           >
             Your name
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             defaultValue={name}
             type="text"
             name="name"
@@ -88,13 +93,13 @@ const ReviewRewrite = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="imgUrl"
           >
             Your Photo Url
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             defaultValue={img}
             type="text"
             name="imgUrl"
@@ -104,13 +109,13 @@ const ReviewRewrite = () => {
         <div className="flex space-x-4">
           <div className="w-1/2">
             <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
+              className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
               htmlFor=""
             >
               Your Email
             </label>
             <input
-              className="block  w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+              className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
               type="email"
               name="email"
               id="email"
@@ -120,13 +125,13 @@ const ReviewRewrite = () => {
           </div>
           <div className="w-1/2">
             <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
+              className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
               htmlFor="userRating"
             >
               Your Rating
             </label>
             <input
-              className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+              className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
               type="telephone"
               name="userRating"
               id="userRating"
@@ -136,13 +141,13 @@ const ReviewRewrite = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="review"
           >
             Re-write Review
           </label>
           <textarea
-            className="block w-full px-8 py-4 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             name="review"
             id="review"
             cols="20"

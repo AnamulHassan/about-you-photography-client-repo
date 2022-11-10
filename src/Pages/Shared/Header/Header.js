@@ -1,78 +1,136 @@
-import React from 'react';
+import { Tooltip } from '@material-tailwind/react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
+import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../Assets/image/logo.png';
 import { AuthContext } from '../../../Contexts/UserContext';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+
+  const handleOpenNav = () => {
+    setOpen(!open);
+  };
   // console.log(user?.photoURL);
   return (
-    <nav
+    <header
       style={{
         background: 'linear-gradient(90deg, #295270 0%,  #524175 100%)',
       }}
-      id="header"
-      className="fixed w-full z-30 top-0 text-[#e8e7e2]"
+      className="w-full py-2 "
     >
-      <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div className="pl-4 flex items-center">
-          <Link to="/home">
-            <img className="w-24" src={logo} alt="" />
-          </Link>
-        </div>
-        <div className="block lg:hidden pr-4">
-          <button
-            id="nav-toggle"
-            className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+      <div className="w-11/12 lg:w-10/12 mx-auto text-[#e8e7e2]">
+        <div className="w-full flex relative justify-between items-center mx-auto px-1 lg:px-0">
+          {/* main */}
+          <div className="w-6/12 lg:w-2/12  ">
+            <Link className="" to="/">
+              <img className="w-[200px] h-full lg:w-1/2" src={logo} alt="" />
+            </Link>
+          </div>
+          <div
+            className={` ${
+              open
+                ? 'top-[500%] py-8 w-11/12 mx-auto space-y-6 lg:space-y-0 '
+                : 'top-[-400%] blur-3xl lg:blur-0'
+            } flex flex-col lg:flex-row bg-[#e8e7e2] lg:justify-center lg:items-center left-2/4 lg:left-0  lg:bg-transparent lg:top-0 translate-x-[-50%] lg:translate-x-0 translate-y-[-50%] lg:translate-y-0 absolute lg:static z-50 items-center text-xl lg:text-lg w-8/12 font-semibold duration-500 text-[#353733] lg:text-[#e8e7e2]`}
           >
-            <svg
-              className="fill-current h-6 w-6"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div
-          className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
-          id="nav-content"
-        >
-          <ul className="list-reset lg:flex justify-end flex-1 items-center">
-            <li className="mr-3">
-              <NavLink className="inline-block py-2 px-4 text-[#e8e7e2] font-bold no-underline">
-                {user?.displayName}
-              </NavLink>
-            </li>
-            <li className="mr-3">
+            {user?.uid && (
               <NavLink
                 to="/my_review"
-                className="inline-block   text-[#e8e7e2] hover:text-underline py-2 px-4"
+                className={({ isActive }) =>
+                  isActive
+                    ? `px-6  duration-300 py-1 bg-[#e8e7e2] text-[#445c44] mx-0 lg:mx-4`
+                    : 'mx-0 lg:mx-4 px-6 py-1'
+                }
               >
                 My Review
               </NavLink>
-            </li>
-            <li className="mr-3">
+            )}
+            {user?.uid && (
               <NavLink
-                to="add_service"
-                className="inline-block text-[#e8e7e2] hover:text-underline py-2 px-4"
+                to="/add_service"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'duration-300 mx-0 lg:mx-4 bg-[#e8e7e2] text-[#445c44] px-6 py-1'
+                    : 'mx-0 lg:mx-4 px-6 py-1'
+                }
               >
                 Add Service
               </NavLink>
-            </li>
-          </ul>
-          <button
-            id="navAction"
-            className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-          >
-            Action
-          </button>
+            )}
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive
+                  ? ' mx-0  duration-300 lg:mx-4  bg-[#e8e7e2] text-[#445c44] px-6 py-1'
+                  : 'mx-0 lg:mx-4 px-6 py-1'
+              }
+            >
+              Blog
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? 'duration-300 bg-[#e8e7e2] text-[#445c44] px-6 py-1 '
+                  : 'px-6 py-1'
+              }
+            >
+              About
+            </NavLink>
+          </div>
+          <div className="flex justify-end items-center relative">
+            <div className="block">
+              <div className="flex items-center">
+                <div className="px-1">
+                  <div className="">
+                    {user?.photoURL ? (
+                      <Tooltip content={user?.displayName}>
+                        <Link to="/profile">
+                          <img
+                            variant="gradient"
+                            className=" rounded-full h-9 md:h-10 xl:h-11 w-9 md:w-10 xl:w-11"
+                            src={user?.photoURL}
+                            alt=""
+                            onError={e =>
+                              (e.currentTarget.src =
+                                'https://cdn-icons-png.flaticon.com/512/219/219983.png')
+                            }
+                          />
+                        </Link>
+                      </Tooltip>
+                    ) : user?.uid ? (
+                      <Link to="/profile">
+                        <FaUserCircle className="h-9 md:h-12 w-9 md:w-12 hover:text-[#0071b3] text-[#575c5f] border-2 border-[#bcbebf] rounded-full" />
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/signin"
+                        className=" px-10  text-center text-md font-bold hover:bg-[#fff] rounded-full cursor-pointer duration-200 py-2 mt-4 text-[#445c44] bg-[#e8e7e2]"
+                      >
+                        Login
+                      </Link>
+                    )}
+                  </div>
+                </div>
+                <button
+                  onClick={handleOpenNav}
+                  type="button"
+                  className="block lg:hidden"
+                >
+                  <div className="l">
+                    <FaBars className="h-10 w-10 p-2 duration-200  hover:text-[#0071b3] text-[#575c5f]" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* main */}
         </div>
       </div>
-      <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
-    </nav>
+    </header>
   );
 };
 

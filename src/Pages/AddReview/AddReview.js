@@ -40,7 +40,7 @@ const AddReview = () => {
     };
 
     // console.log(updateReview);
-    fetch(`http://localhost:5000/add_review`, {
+    fetch(`https://about-you-photography-server.vercel.app/add_review`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -79,19 +79,19 @@ const AddReview = () => {
   return (
     <section
       style={{ fontFamily: "'Nunito', sans-serif" }}
-      className="text-[#353733] mt-24 py-12 px-8 w-8/12 mx-auto bg-[#dbd7ce]"
+      className="text-[#353733] mt-12 py-12 px-2 lg:px-8 w-11/12 lg:w-8/12 mx-auto bg-[#dbd7ce]"
     >
       <h1 className="text-center font-bold text-3xl ">Add Your Review</h1>
       <form onSubmit={handleAddReview}>
-        <div className="">
+        <div className="mt-8 lg:mb-0">
           <label
-            className="text-2xl ml-8 font-semibold block select-none mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="name"
           >
             Your name
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             type="text"
             name="name"
             id="name"
@@ -101,13 +101,13 @@ const AddReview = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="imgUrl"
           >
             Your Photo Url
           </label>
           <input
-            className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             placeholder="Paste your photo url"
             type="text"
             name="imgUrl"
@@ -118,13 +118,13 @@ const AddReview = () => {
         <div className="flex space-x-4">
           <div className="w-1/2">
             <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
+              className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
               htmlFor=""
             >
               Your Email
             </label>
             <input
-              className="block  w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+              className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
               type="email"
               name="email"
               id="email"
@@ -134,13 +134,13 @@ const AddReview = () => {
           </div>
           <div className="w-1/2">
             <label
-              className="text-2xl ml-8 font-semibold select-none block mb-2"
+              className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
               htmlFor="userRating"
             >
               Your Rating
             </label>
             <input
-              className="block w-full px-8 py-2 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+              className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
               type="telephone"
               name="userRating"
               id="userRating"
@@ -151,13 +151,13 @@ const AddReview = () => {
         </div>
         <div>
           <label
-            className="text-2xl ml-8 font-semibold select-none block mb-2"
+            className="text-lg lg:text-2xl ml-4 lg:ml-8 font-semibold block select-none mb-1 lg:mb-2"
             htmlFor="review"
           >
             Your Review
           </label>
           <textarea
-            className="block w-full px-8 py-4 mb-2 text-xl font-semibold outline-none border-2 border-[#939894]"
+            className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
             name="review"
             id="review"
             cols="20"
