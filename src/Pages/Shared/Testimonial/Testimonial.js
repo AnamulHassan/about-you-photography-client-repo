@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContext';
 import Swal from 'sweetalert2';
 
-const Testimonial = ({ reviewData }) => {
+const Testimonial = ({ reviewData, reviews, setReviews }) => {
   const { user, setStepBack } = useContext(AuthContext);
   const location = useLocation();
   const { _id, img, email, name, rating, review } = reviewData;
@@ -27,6 +27,10 @@ const Testimonial = ({ reviewData }) => {
           .then(result => {
             console.log(result);
             if (result.deletedCount > 0) {
+              const remainingReview = reviews.filter(
+                review => review._id !== _id
+              );
+              setReviews(remainingReview);
               Swal.fire('Deleted!', 'Your review has been deleted.', 'success');
             }
           });

@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { FaStar, FaTags } from 'react-icons/fa';
+import { FaSadTear, FaSignInAlt, FaStar, FaTags } from 'react-icons/fa';
 import Testimonial from '../Shared/Testimonial/Testimonial';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/UserContext';
 
 const ServiceDetails = () => {
   const serviceInfo = useLoaderData();
+  const location = useLocation();
+  const { user, setStepBack } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   const {
+    _id,
     img1,
     img2,
     img3,
@@ -20,7 +25,7 @@ const ServiceDetails = () => {
     servicePackage2,
     serviceRating,
   } = serviceInfo;
-  // console.log(typeof serviceRating);
+  // console.log(serviceInfo);
   useEffect(() => {
     fetch(`http://localhost:5000/review_data?category=${serviceName}`, {})
       .then(res => res.json())
@@ -28,6 +33,7 @@ const ServiceDetails = () => {
         setReviews(data);
       });
   }, []);
+  // console.log(serviceInfo);
   return (
     <section className="bg-[#dbd7ce] -mb-12">
       <div
@@ -143,11 +149,34 @@ const ServiceDetails = () => {
           ))}
         {reviews.length === 0 && (
           <div className="flex justify-center">
-            <h2 className=" inline-block my-8 text-[#5e422d] bg-[#d1c0b9] border-2 px-10 py-2">
-              There is no review in this service
+            <h2 className="  my-8 inline-flex font-semibold items-center text-[#5e422d] bg-[#d1c0b9] border-2 px-10 py-2">
+              There is no review in this service <FaSadTear className="ml-2" />
             </h2>
           </div>
         )}
+        <div>
+          <div>
+            {!user?.email && (
+              <Link
+                onClick={() => setStepBack(location?.pathname)}
+                to={`/add_review/${_id}`}
+                className="inline-flex justify-center items-center text-center text-xl font-semibold hover:text-white  hover:mx-2 duration-200 px-8 py-2 mt-2 bg-[#445c44] text-[#e8e7e2]"
+              >
+                Sign in to add review <FaSignInAlt className="ml-2 text-2xl" />
+              </Link>
+            )}
+          </div>
+
+          {user?.uid && (
+            <Link
+              onClick={() => setStepBack(location?.pathname)}
+              to={`/add_review/${_id}`}
+              className="inline-flex justify-center items-center text-center text-xl font-semibold hover:text-white  hover:mx-2 duration-200 px-8 py-2 mt-2 bg-[#445c44] text-[#e8e7e2]"
+            >
+              Write your feedback <FaSignInAlt className="ml-2 text-2xl" />
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );

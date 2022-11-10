@@ -18,8 +18,10 @@ const ServiceCard = ({ serviceData }) => {
         <img className="" src={img1} alt="" />
       </div>
       <div className="py-4 px-3">
-        <p className="text-2xl font-semibold text-[#353733]">{serviceName}</p>
-        <p className="text-base font-semibold mt-2 text-[#939894]">
+        <p className="text-2xl text-start font-semibold text-[#353733]">
+          {serviceName}
+        </p>
+        <p className="text-base text-start font-semibold mt-2 text-[#939894]">
           {serviceDetails.slice(0, 100) + '...'}
         </p>
         <div className="flex justify-between mt-3">
