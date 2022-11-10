@@ -12,7 +12,6 @@ const ResetPassword = () => {
     const email = form.email.value;
     forgetPassword(email)
       .then(result => {
-        console.log(result);
         toast.success('Check your email to reset your password', {
           style: {
             border: '4px solid #445c44',

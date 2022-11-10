@@ -11,7 +11,6 @@ const RecentWork = () => {
       .then(res => res.json())
       .then(data => setRecentWork(data));
   }, []);
-  // console.log(recentWork);
   return (
     <div className="bg-[#e8e7e2] my-24">
       <h2

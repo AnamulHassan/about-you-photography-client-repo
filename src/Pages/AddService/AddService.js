@@ -43,7 +43,6 @@ const AddService = () => {
       servicePackage2,
       date,
     };
-    // console.log(addService);
 
     fetch(`https://about-you-photography-server.vercel.app/add_service`, {
       method: 'POST',
@@ -54,7 +53,6 @@ const AddService = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
         if (result.insertedId) {
           form.reset();
           navigate('/services');

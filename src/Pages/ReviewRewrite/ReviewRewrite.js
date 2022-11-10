@@ -27,7 +27,6 @@ const ReviewRewrite = () => {
       rating,
       review,
     };
-    // console.log(updateReview);
     fetch(
       `https://about-you-photography-server.vercel.app/review_rewrite/${_id}`,
       {

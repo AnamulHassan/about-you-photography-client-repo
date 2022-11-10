@@ -4,7 +4,6 @@ import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 
 const Services = () => {
   const servicesData = useLoaderData();
-  // console.log(servicesData);
   return (
     <section className="bg-[#e8e7e2] py-6 lg:py-12 -mb-12">
       <div className="w-11/12 lg:w-10/12 mx-auto py-2 lg:py-4 p-2 md:p-8 lg:p-10 font-serif text-center">

@@ -11,7 +11,6 @@ import logo from '../../../Assets/image/logo.png';
 
 const Footer = () => {
   const location = useLocation();
-  // console.log(location.pathname.slice(0, 10));
   return (
     <footer
       style={{

@@ -7,11 +7,10 @@ import { AuthContext } from '../../Contexts/UserContext';
 const AddReview = () => {
   const service = useLoaderData();
   const category = service.serviceName;
-  // console.log(serviceName);
+
   const { user, stepBack } = useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  console.log(new Date().toISOString());
   const handleAddReview = event => {
     event.preventDefault();
     const form = event.target;
@@ -39,7 +38,6 @@ const AddReview = () => {
       category,
     };
 
-    // console.log(updateReview);
     fetch(`https://about-you-photography-server.vercel.app/add_review`, {
       method: 'POST',
       headers: {

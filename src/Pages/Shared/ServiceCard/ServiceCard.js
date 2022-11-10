@@ -11,7 +11,6 @@ const ServiceCard = ({ serviceData }) => {
     servicePackage1,
     serviceDetails,
   } = serviceData;
-  // console.log(_id);
   return (
     <div className="bg-white">
       <div>

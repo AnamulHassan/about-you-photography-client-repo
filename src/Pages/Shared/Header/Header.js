@@ -13,7 +13,7 @@ const Header = () => {
   const handleOpenNav = () => {
     setOpen(!open);
   };
-  // console.log(user?.photoURL);
+
   return (
     <header
       style={{

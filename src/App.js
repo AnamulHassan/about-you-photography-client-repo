@@ -13,19 +13,3 @@ function App() {
 }
 
 export default App;
-
-/* {
-  style={{fontFamily: "'Roboto', sans-serif"}}
-} */
-
-/* {
-   style={{fontFamily: "'Roboto Slab', sans-serif"}}
-} */
-
-// {
-//   fontFamily: "'Dancing Script', cursive";
-// }
-
-// {
-//   font-family: 'Nunito', sans-serif;
-// }

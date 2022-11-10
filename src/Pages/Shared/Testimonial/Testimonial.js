@@ -28,7 +28,6 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
         )
           .then(res => res.json())
           .then(result => {
-            console.log(result);
             if (result.deletedCount > 0) {
               const remainingReview = reviews.filter(
                 review => review._id !== _id

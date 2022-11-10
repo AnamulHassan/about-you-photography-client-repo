@@ -28,7 +28,7 @@ const MyReview = () => {
           navigate('/signin');
           return logOutUser()
             .then(() => {})
-            .catch(error => console.log(error));
+            .catch(error => console.error(error));
         }
         return res.json();
       })

@@ -25,7 +25,7 @@ const ServiceDetails = () => {
     servicePackage2,
     serviceRating,
   } = serviceInfo;
-  // console.log(serviceInfo);
+
   useEffect(() => {
     fetch(
       `https://about-you-photography-server.vercel.app/review_data?category=${serviceName}`,
