@@ -35,7 +35,7 @@ const ServiceDetails = () => {
       .then(data => {
         setReviews(data);
       });
-  }, []);
+  }, [serviceName]);
   return (
     <section className="bg-[#dbd7ce] -mb-12">
       <div
@@ -90,9 +90,11 @@ const ServiceDetails = () => {
           </p>
           <p className="text-xl font-[#353733] font-semibold">Package Rating</p>
           <ul className="flex  items-center">
-            {[...Array(Math.ceil(+serviceRating)).keys()].map((_, index) => (
-              <FaStar className="text-[#f59f00]" key={index} />
-            ))}
+            {isNaN(serviceRating)
+              ? 'not found'
+              : [...Array(Math.ceil(+serviceRating)).keys()].map((_, index) => (
+                  <FaStar className="text-[#f59f00]" key={index} />
+                ))}
             <li className="text-md font-bold ml-2 text-[#445c44]">
               {serviceRating}
             </li>

@@ -139,7 +139,7 @@ const AddReview = () => {
             </label>
             <input
               className="block w-full px-4 lg:px-8 py-2 mb-2 text-md lg:text-xl font-semibold outline-none border-2 border-[#939894]"
-              type="telephone"
+              type="text"
               name="userRating"
               id="userRating"
               required

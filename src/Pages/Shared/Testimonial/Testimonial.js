@@ -58,9 +58,11 @@ const Testimonial = ({ reviewData, reviews, setReviews }) => {
             {name}
           </p>
           <ul className="flex  items-center">
-            {[...Array(Math.ceil(+rating)).keys()].map((_, index) => (
-              <FaStar className="text-[#f59f00]" key={index} />
-            ))}
+            {isNaN(rating)
+              ? 'not found'
+              : [...Array(Math.ceil(+rating)).keys()].map((_, index) => (
+                  <FaStar className="text-[#f59f00]" key={index} />
+                ))}
             <li className="text-md font-bold ml-2 text-[#445c44]">{rating}</li>
           </ul>
         </div>

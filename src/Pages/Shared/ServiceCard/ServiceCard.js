@@ -21,7 +21,9 @@ const ServiceCard = ({ serviceData }) => {
           {serviceName}
         </p>
         <p className="text-base text-start font-semibold mt-2 text-[#939894]">
-          {serviceDetails.slice(0, 100) + '...'}
+          {serviceDetails.length > 100
+            ? serviceDetails.slice(0, 100) + '...'
+            : serviceDetails}
         </p>
         <div className="flex justify-between mt-3">
           <div className="flex items-start flex-col">
@@ -37,9 +39,13 @@ const ServiceCard = ({ serviceData }) => {
               Package Rating
             </p>
             <ul className="flex  items-center">
-              {[...Array(Math.ceil(+serviceRating)).keys()].map((_, index) => (
-                <FaStar className="text-[#f59f00]" key={index} />
-              ))}
+              {isNaN(serviceRating)
+                ? 'not found'
+                : [...Array(Math.ceil(+serviceRating)).keys()].map(
+                    (_, index) => (
+                      <FaStar className="text-[#f59f00]" key={index} />
+                    )
+                  )}
               <li className="text-md font-bold ml-2 text-[#445c44]">
                 {serviceRating}
               </li>

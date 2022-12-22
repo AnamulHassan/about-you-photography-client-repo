@@ -121,7 +121,7 @@ const Header = () => {
                   className="block lg:hidden"
                 >
                   <div className="l">
-                    <FaBars className="h-10 w-10 p-2 duration-200  hover:text-[#0071b3] text-[#575c5f]" />
+                    <FaBars className="h-10 w-10 p-2 duration-200  hover:text-[#0071b3] text-[#e8e7e2]" />
                   </div>
                 </button>
               </div>
